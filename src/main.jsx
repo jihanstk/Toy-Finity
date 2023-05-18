@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./LayOuts/Main/Main";
 import Home from "./components/Home/Home/Home";
 import AddAToy from "./components/AddAToy/AddAToy";
+import Register from "./components/Register/Register";
+import AuthProvider from "./AuthProvider/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -20,12 +22,18 @@ const router = createBrowserRouter([
         path: "/add-toy",
         element: <AddAToy></AddAToy>,
       },
+      {
+        path: "/register",
+        element: <Register></Register>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

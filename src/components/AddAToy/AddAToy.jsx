@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 
 const AddAToy = () => {
   const handleSubmitToy = (event) => {
+    // form select
     event.preventDefault();
     const form = event.target;
     const toyName = form.toyName.value;
@@ -22,6 +23,8 @@ const AddAToy = () => {
       quantity,
       details,
     };
+
+    // post data via api
 
     fetch("http://localhost:5021/add-toy", {
       method: "POST",
