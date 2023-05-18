@@ -7,11 +7,13 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-  const { loginUser, googleLogin } = useContext(AuthContext);
+  const { loginUser, googleLogin, setPath } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const handleGoogle = () => {
     googleLogin();
+
+    setPath(navigate(from, { replace: true }));
   };
   const handleLoginSubmit = (event) => {
     setError("");
@@ -69,11 +71,7 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <input
-                  className="btn btn-error"
-                  type="submit"
-                  value="Register"
-                />
+                <input className="btn btn-error" type="submit" value="Log in" />
               </div>
             </div>
           </form>

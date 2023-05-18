@@ -11,6 +11,7 @@ import AuthProvider from "./AuthProvider/AuthProvider";
 import Login from "./components/Login/Login";
 import MyToys from "./components/MyToys/MyToys";
 import PrivetRoute from "./PrivetRoute/PrivetRoute";
+import UpdateToy from "./components/MyToys/MyToyRow/UpdateToy/UpdateToy";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,16 @@ const router = createBrowserRouter([
             <AddAToy></AddAToy>
           </PrivetRoute>
         ),
+      },
+      {
+        path: "/update-toy/:id",
+        element: (
+          <PrivetRoute>
+            <UpdateToy></UpdateToy>
+          </PrivetRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5021/my-toys/${params.id}`),
       },
       {
         path: "/register",

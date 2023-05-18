@@ -9,6 +9,7 @@ const AddAToy = () => {
     event.preventDefault();
     const form = event.target;
     const toyName = form.toyName.value;
+    const email = form.email.value;
     const photo = form.photo.value;
     const seller = form.seller.value;
     const category = form.category.value;
@@ -25,6 +26,7 @@ const AddAToy = () => {
       rating,
       quantity,
       details,
+      email,
     };
 
     // post data via api
