@@ -1,14 +1,18 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { IoLogoGoogle } from "react-icons/io";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, googleLogin } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const handleGoogle = () => {
+    googleLogin();
+  };
   const handleLoginSubmit = (event) => {
     setError("");
     setSuccess("");
@@ -80,6 +84,12 @@ const Login = () => {
                 Please Register
               </Link>
             </p>
+            <div>
+              <button onClick={handleGoogle} className="btn btn-ghost ">
+                <IoLogoGoogle className="text-3xl text-orange-700"></IoLogoGoogle>
+                <span className="text-blue-800">Google</span>
+              </button>
+            </div>
             <p className="text-red-700">{error}</p>
             <p className="text-green-800">{success}</p>
           </div>
