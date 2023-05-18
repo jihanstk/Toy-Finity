@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Arimo", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
+}
