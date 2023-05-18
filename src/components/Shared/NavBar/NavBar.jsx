@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoMdClose, IoIosMenu, IoMdSearch } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvider/AuthProvider";
 // import { NavLink } from "react-router-dom";
 const NavBar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [showSearchBar, setShowSearchBar] = useState(false);
+  const handleLogOut = () => {
+    logOut();
+  };
   let Links = [
     { name: "HOME", link: "/" },
     { name: "All Toys", link: "/all-toys" },
@@ -69,21 +74,27 @@ const NavBar = () => {
           >
             <IoMdSearch></IoMdSearch>
           </div>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                <div className="w-10 rounded-full">
+                  <img src={user.photoURL} />
+                </div>
+              </label>
+              <ul
+                tabIndex={0}
+                className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <li onClick={handleLogOut}>
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <button className="btn btn-primary">
+              <Link to="/login">Login</Link>
+            </button>
+          )}
         </div>
       </div>
     </div>

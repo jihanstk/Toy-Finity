@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
-const Register = () => {
+const Login = () => {
   const { UpdateUserProfile, registerUser } = useContext(AuthContext);
-  const handleRegisterSubmit = (event) => {
+  const handleLoginSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -21,38 +21,14 @@ const Register = () => {
       .catch((err) => console.log(err.message));
   };
   return (
-    <div className="hero min-h-screen mt-24 bg-base-200">
+    <div className="hero min-h-screen  bg-base-200">
       <div className="hero-content flex-col w-5/12 ">
         <div className="text-center">
-          <h1 className="text-5xl font-bold">Please Register!</h1>
+          <h1 className="text-5xl font-bold">Please Login!</h1>
         </div>
         <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
-          <form onSubmit={handleRegisterSubmit}>
+          <form onSubmit={handleLoginSubmit}>
             <div className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Photo</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Photo URL"
-                  name="photo"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -93,9 +69,9 @@ const Register = () => {
           </form>
           <div className="p-8">
             <p>
-              Already have an account{" "}
-              <Link className="text-orange-700 font-bold" to="/login">
-                Please Login
+              Do not have an account?{" "}
+              <Link className="text-orange-700 font-bold" to="/register">
+                Please Register
               </Link>
             </p>
           </div>
@@ -105,4 +81,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;
