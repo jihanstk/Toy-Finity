@@ -15,8 +15,9 @@ const Register = () => {
     registerUser(email, password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
         UpdateUserProfile(user, name, photoUrl);
+        console.log(res.user);
+        form.reset();
       })
       .catch((err) => console.log(err.message));
   };

@@ -1,24 +1,30 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const { UpdateUserProfile, registerUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  const { loginUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const handleLoginSubmit = (event) => {
+    setError("");
+    setSuccess("");
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
-    const photoUrl = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photoUrl, email, password);
-    registerUser(email, password)
+    console.log(email, password);
+    loginUser(email, password)
       .then((res) => {
         const user = res.user;
         console.log(user);
-        UpdateUserProfile(user, name, photoUrl);
+        setSuccess("User Is Log in");
+        navigate(from, { replace: true });
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => setError(err.message));
   };
   return (
     <div className="hero min-h-screen  bg-base-200">
@@ -74,6 +80,8 @@ const Login = () => {
                 Please Register
               </Link>
             </p>
+            <p className="text-red-700">{error}</p>
+            <p className="text-green-800">{success}</p>
           </div>
         </div>
       </div>

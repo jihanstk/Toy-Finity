@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AddAToy = () => {
+  const { user } = useContext(AuthContext);
   const handleSubmitToy = (event) => {
     // form select
     event.preventDefault();
@@ -92,7 +95,7 @@ const AddAToy = () => {
                       required
                       name="seller"
                       placeholder="Seller Name"
-                      //   defaultValue={user}
+                      defaultValue={user?.displayName}
                       className="input input-bordered"
                     />
                   </div>
@@ -105,6 +108,7 @@ const AddAToy = () => {
                       required
                       name="email"
                       placeholder="Email"
+                      defaultValue={user?.email}
                       className="input input-bordered"
                     />
                   </div>
@@ -172,7 +176,7 @@ const AddAToy = () => {
                     <span className="label-text">Description About Toy</span>
                   </label>
                   <textarea
-                    className="border-2"
+                    className="border-2 p-5"
                     name="details"
                     placeholder="Write Description Here ..."
                     cols="50"

@@ -78,7 +78,10 @@ const NavBar = () => {
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src={user.photoURL} />
+                  <img
+                    title={`${user?.displayName} (to logOut click this image)`}
+                    src={user?.photoURL}
+                  />
                 </div>
               </label>
               <ul
@@ -91,9 +94,9 @@ const NavBar = () => {
               </ul>
             </div>
           ) : (
-            <button className="btn btn-primary">
-              <Link to="/login">Login</Link>
-            </button>
+            <Link className="btn btn-primary" to="/login">
+              Login
+            </Link>
           )}
         </div>
       </div>

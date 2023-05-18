@@ -9,6 +9,8 @@ import AddAToy from "./components/AddAToy/AddAToy";
 import Register from "./components/Register/Register";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import Login from "./components/Login/Login";
+import MyToys from "./components/MyToys/MyToys";
+import PrivetRoute from "./PrivetRoute/PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -20,8 +22,20 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/my-toys",
+        element: (
+          <PrivetRoute>
+            <MyToys></MyToys>
+          </PrivetRoute>
+        ),
+      },
+      {
         path: "/add-toy",
-        element: <AddAToy></AddAToy>,
+        element: (
+          <PrivetRoute>
+            <AddAToy></AddAToy>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/register",
