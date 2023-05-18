@@ -5,6 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./LayOuts/Main/Main";
 import Home from "./components/Home/Home/Home";
+import AddAToy from "./components/AddAToy/AddAToy";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/add-toy",
+        element: <AddAToy></AddAToy>,
       },
     ],
   },

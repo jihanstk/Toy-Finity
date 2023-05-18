@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IoMdClose, IoIosMenu, IoMdSearch } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 // import { NavLink } from "react-router-dom";
 const NavBar = () => {
   const [showSearchBar, setShowSearchBar] = useState(false);
@@ -13,14 +13,16 @@ const NavBar = () => {
   ];
   let [open, setOpen] = useState(false);
   return (
-    <div className="shadow-md w-full fixed top-0 left-0 z-10 ">
+    <div className="shadow-md w-full fixed top-0  left-0 z-10 ">
       <div className="flex items-center justify-between bg-white py-4 md:px-10 px-7">
         <div
           className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
     text-gray-800"
         >
-          <span className="text-3xl text-indigo-600 mr-1 pt-2"></span>
-          TOYFINITY
+          <Link to="/">
+            <span className="text-3xl text-indigo-600 mr-1 pt-2"></span>
+            TOYFINITY
+          </Link>
         </div>
 
         <ul
