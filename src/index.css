@@ -19,4 +19,7 @@ body {
   .add-toy {
     display: block;
   }
+  .youtube {
+    width: 100%;
+  }
 }
