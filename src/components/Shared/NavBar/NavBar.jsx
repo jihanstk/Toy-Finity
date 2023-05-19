@@ -9,13 +9,7 @@ const NavBar = () => {
   const handleLogOut = () => {
     logOut();
   };
-  let Links = [
-    { name: "HOME", link: "/" },
-    { name: "All Toys", link: "/all-toys" },
-    { name: "My Toys", link: "/my-toys" },
-    { name: "Add a Toy", link: "/add-toy" },
-    { name: "Blog", link: "/blog" },
-  ];
+
   let [open, setOpen] = useState(false);
   return (
     <div className="shadow-md w-full fixed top-0  left-0 z-10 ">
@@ -35,18 +29,62 @@ const NavBar = () => {
             open ? "top-20 " : "top-[-490px]"
           }`}
         >
-          {Links.map((link) => (
-            <li key={link.name} className="md:ml-8 text-xl md:my-0 my-7">
-              <NavLink
-                to={`${link.link}`}
-                className={({ isActive }) =>
-                  isActive ? "text-orange-700" : ""
-                }
-              >
-                {link.name}
-              </NavLink>
-            </li>
-          ))}
+          <li className="md:ml-8 text-xl md:my-0 my-7">
+            <NavLink
+              onClick={() => setOpen(false)}
+              to="/"
+              className={({ isActive }) => (isActive ? "text-orange-700" : "")}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="md:ml-8 text-xl md:my-0 my-7">
+            <NavLink
+              onClick={() => setOpen(false)}
+              to="/all-toys"
+              className={({ isActive }) => (isActive ? "text-orange-700" : "")}
+            >
+              All Toys
+            </NavLink>
+          </li>
+
+          {user ? (
+            <>
+              <li className="md:ml-8 text-xl md:my-0 my-7">
+                <NavLink
+                  onClick={() => setOpen(false)}
+                  to="my-toys"
+                  className={({ isActive }) =>
+                    isActive ? "text-orange-700" : ""
+                  }
+                >
+                  My Toys
+                </NavLink>
+              </li>
+              <li className="md:ml-8 text-xl md:my-0 my-7">
+                <NavLink
+                  onClick={() => setOpen(false)}
+                  to="add-toy"
+                  className={({ isActive }) =>
+                    isActive ? "text-orange-700" : ""
+                  }
+                >
+                  Add a Toy
+                </NavLink>
+              </li>
+            </>
+          ) : (
+            ""
+          )}
+          <li className="md:ml-8 text-xl md:my-0 my-7">
+            <NavLink
+              onClick={() => setOpen(false)}
+              to="blog"
+              className={({ isActive }) => (isActive ? "text-orange-700" : "")}
+            >
+              Blog
+            </NavLink>
+          </li>
         </ul>
 
         <div
