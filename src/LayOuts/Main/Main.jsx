@@ -6,7 +6,7 @@ const Main = () => {
   return (
     <div>
       <NavBar></NavBar>
-      <div className="mt-24 min-h-screen">
+      <div className="mt-24 min-h-[60vh]">
         <Outlet></Outlet>
       </div>
       <div className="">

@@ -14,7 +14,7 @@ const UpdateToy = () => {
     toyName,
     category,
     rating,
-  } = UpdateData[0];
+  } = UpdateData;
 
   const handleUpdateToy = (event) => {
     // form select
