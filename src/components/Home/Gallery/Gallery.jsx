@@ -8,8 +8,8 @@ const Gallery = () => {
   return (
     <>
       <div data-aos="fade-up-right" data-aos-duration="1000">
-        <h1 className="text-5xl font-bold text-center">Some Toys For </h1>
-        <p className="w-1/2 mx-auto text-center text-slate-600">
+        <h1 className="text-5xl font-bold text-center">Recent Toy Photos</h1>
+        <p className="md:w-1/2 md:mx-auto text-center text-slate-600">
           Welcome to the Car Toys Gallery, where the world of wheels comes
           alive! rugged off-roaders, and iconic classics. Immerse yourself in
           the artistry of craftsmanship as you explore our meticulously curated
