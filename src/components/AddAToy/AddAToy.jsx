@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { titleName } from "../../TitleName/TitleName";
 
 const AddAToy = () => {
   const { user } = useContext(AuthContext);
+  titleName("Add A toy");
   const handleSubmitToy = (event) => {
     // form select
     event.preventDefault();

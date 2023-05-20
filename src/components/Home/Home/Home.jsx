@@ -1,9 +1,11 @@
+import { titleName } from "../../../TitleName/TitleName";
 import Banner from "../Banner/Banner";
 import CategoryToys from "../CategoryToys/CategoryToys";
 import ChildrenVideo from "../ChildrenVideo/ChildrenVideo";
 import Gallery from "../Gallery/Gallery";
 
 const Home = () => {
+  titleName("");
   return (
     <div>
       <Banner></Banner>

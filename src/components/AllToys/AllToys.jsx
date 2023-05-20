@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import AllToyRow from "./AllToyRow";
 import { IoMdSearch } from "react-icons/io";
+import { titleName } from "../../TitleName/TitleName";
 // import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AllToys = () => {
@@ -13,6 +14,7 @@ const AllToys = () => {
   useEffect(() => {
     setMytoys(null);
     setLoading(true);
+    titleName("All-Toys");
     fetch(`http://localhost:5021/all-toys`)
       .then((res) => res.json())
       .then((data) => {

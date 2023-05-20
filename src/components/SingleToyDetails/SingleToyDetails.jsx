@@ -1,10 +1,12 @@
 import { useLoaderData } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
+import { titleName } from "../../TitleName/TitleName";
 
 const SingleToyDetails = () => {
   const singlePageData = useLoaderData();
   const { toyName, photo, price, rating, seller, quantity, email, details } =
     singlePageData;
+  titleName("single");
   return (
     <div className="w-11/12 mx-auto my-24">
       <div className="w-full h-1/2 md:flex gap-10 items-center border-2">

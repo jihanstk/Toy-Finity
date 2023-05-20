@@ -1,8 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { titleName } from "../../../../TitleName/TitleName";
 
 const UpdateToy = () => {
   const UpdateData = useLoaderData();
+  titleName("Update-Toy");
   console.log(UpdateData);
   const {
     _id,

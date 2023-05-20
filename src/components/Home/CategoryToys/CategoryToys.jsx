@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import "aos/dist/aos.css";
+import Aos from "aos";
 
 import SingleTabPanel from "./singleTabPanel/SingleTabPanel";
 
@@ -8,6 +10,9 @@ const CategoryToys = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [category, setCategory] = useState([]);
   const [tabText, setTabText] = useState("sport");
+  useEffect(() => {
+    Aos.init();
+  }, []);
 
   console.log(tabText);
   const handleTab = (name) => {
@@ -40,7 +45,12 @@ const CategoryToys = () => {
       });
   }, []);
   return (
-    <div className="my-24 text-center">
+    <div
+      className="my-24 text-center"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-offset="200"
+    >
       <div className="my-10">
         <h1 className="text-4xl font-bold">Shop By Category</h1>
         <p className="md:w-1/2 mx-auto text-slate-600 my-3">

@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import MyToyRow from "./MyToyRow/MyToyRow";
 import Swal from "sweetalert2";
+import { titleName } from "../../TitleName/TitleName";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
   const [myToys, setMytoys] = useState([]);
   const [loading, setLoading] = useState(true);
+  titleName("My-Toy");
 
   const handleDeleteMyToy = (id) => {
     Swal.fire({

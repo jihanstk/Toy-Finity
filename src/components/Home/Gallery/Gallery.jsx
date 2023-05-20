@@ -6,7 +6,7 @@ const Gallery = () => {
     Aos.init();
   }, []);
   return (
-    <>
+    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
       <div data-aos="fade-up-right" data-aos-duration="1000">
         <h1 className="text-5xl font-bold text-center">Recent Toy Photos</h1>
         <p className="md:w-1/2 md:mx-auto text-center text-slate-600">
@@ -17,12 +17,7 @@ const Gallery = () => {
         </p>
       </div>
       <div className="grid md:grid-cols-2 h-1/4 overflow-y-hidden">
-        <div
-          className="flex relative p-6"
-          data-aos="fade-up-right"
-          data-aos-duration="1000"
-          data-aos-offset="200"
-        >
+        <div className="flex relative p-6">
           <img
             src="https://images.pexels.com/photos/92615/pexels-photo-92615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt=""
@@ -95,7 +90,7 @@ const Gallery = () => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
