@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import ReactStars from "react-rating-stars-component";
-import { Link } from "react-router-dom";
+
+import SingleTabPanel from "./singleTabPanel/SingleTabPanel";
 
 const CategoryToys = () => {
-  const [tabText, setTabText] = useState("sport");
   const [categoryData, setCategoryData] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [tabText, setTabText] = useState("sport");
 
+  console.log(tabText);
   const handleTab = (name) => {
     setTabText("");
     setTabText(name);
   };
   useEffect(() => {
+    setCategoryData(null);
     fetch(`http://localhost:5021/category-data?category=${tabText}`)
       .then((res) => res.json())
       .then((data) => {
@@ -20,193 +23,56 @@ const CategoryToys = () => {
         console.log(data);
       });
   }, [tabText]);
+  useEffect(() => {
+    fetch(`http://localhost:5021/all-toys`)
+      .then((res) => res.json())
+      .then((data) => {
+        const uniqueCategories = [];
+
+        data.forEach((toy) => {
+          if (!uniqueCategories.includes(toy.category)) {
+            uniqueCategories.push(toy.category);
+          }
+        });
+
+        setCategory(uniqueCategories);
+        console.log(uniqueCategories);
+      });
+  }, []);
   return (
     <div className="my-24 text-center">
+      <div className="my-10">
+        <h1 className="text-4xl font-bold">Shop By Category</h1>
+        <p className="md:w-1/2 mx-auto text-slate-600 my-3">
+          You Can shop By category Wise Its easy to identify you desired
+          products
+        </p>
+      </div>
       <Tabs>
         <TabList>
-          <Tab onClick={() => handleTab("sport")}>Sport</Tab>
-          <Tab onClick={() => handleTab("ambulance")}>Ambulance</Tab>
-          <Tab onClick={() => handleTab("sweet")}>Sweet</Tab>
-          <Tab onClick={() => handleTab("old")}>Old</Tab>
+          {category?.map((cat, index) => {
+            return (
+              <Tab onClick={() => handleTab(cat)} key={index}>
+                {cat}
+                {/* {console.log(e.target.value)} */}
+              </Tab>
+            );
+          })}
         </TabList>
-        <div className="text-center">
-          <TabPanel>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
-              {categoryData.map((data) => {
-                return (
-                  <div
-                    key={data._id}
-                    className="card w-96 bg-base-100 shadow-xl"
-                  >
-                    <figure className="h-[300px]">
-                      <img src={data.photo} alt="Shoes" />
-                    </figure>
-                    <div className="card-body">
-                      <h2 className="card-title">{data.toyName}</h2>
-                      <p className="text-left">Price : {data.price}</p>
-                      <div className="flex items-center gap-2 my-3">
-                        <ReactStars
-                          classNames="text-slate-500 inline"
-                          count={5}
-                          value={data.rating}
-                          edit={false}
-                          size={14}
-                          isHalf={true}
-                          emptyIcon={<i className="far fa-star"></i>}
-                          halfIcon={<i className="fa fa-star-half-alt"></i>}
-                          fullIcon={<i className="fa fa-star"></i>}
-                          activeColor="text-slate-500"
-                        />
-                        <span className="text-orange-700 font-bold ">
-                          {data.rating}
-                        </span>
-                      </div>
-                      <div className="card-actions justify-center">
-                        <Link to={`/details-toy/${data._id}`}>
-                          <button className="btn btn-error">
-                            View Details
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
-              {categoryData.map((data) => {
-                return (
-                  <div
-                    key={data._id}
-                    className="card w-96 bg-base-100 shadow-xl"
-                  >
-                    <figure className="h-[300px]">
-                      <img src={data.photo} alt="Shoes" />
-                    </figure>
-                    <div className="card-body">
-                      <h2 className="card-title">{data.toyName}</h2>
-                      <p className="text-left">Price : {data.price}</p>
-                      <div className="flex items-center gap-2 my-3">
-                        <ReactStars
-                          classNames="text-slate-500 inline"
-                          count={5}
-                          value={data.rating}
-                          edit={false}
-                          size={14}
-                          isHalf={true}
-                          emptyIcon={<i className="far fa-star"></i>}
-                          halfIcon={<i className="fa fa-star-half-alt"></i>}
-                          fullIcon={<i className="fa fa-star"></i>}
-                          activeColor="text-slate-500"
-                        />
-                        <span className="text-orange-700 font-bold ">
-                          {data.rating}
-                        </span>
-                      </div>
-                      <div className="card-actions justify-center">
-                        <Link to={`/details-toy/${data._id}`}>
-                          <button className="btn btn-error">
-                            View Details
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
-              {categoryData.map((data) => {
-                return (
-                  <div
-                    key={data._id}
-                    className="card w-96 bg-base-100 shadow-xl"
-                  >
-                    <figure className="h-[300px]">
-                      <img src={data.photo} alt="Shoes" />
-                    </figure>
-                    <div className="card-body">
-                      <h2 className="card-title">{data.toyName}</h2>
-                      <p className="text-left">Price : {data.price}</p>
-                      <div className="flex items-center gap-2 my-3">
-                        <ReactStars
-                          classNames="text-slate-500 inline"
-                          count={5}
-                          value={data.rating}
-                          edit={false}
-                          size={14}
-                          isHalf={true}
-                          emptyIcon={<i className="far fa-star"></i>}
-                          halfIcon={<i className="fa fa-star-half-alt"></i>}
-                          fullIcon={<i className="fa fa-star"></i>}
-                          activeColor="text-slate-500"
-                        />
-                        <span className="text-orange-700 font-bold ">
-                          {data.rating}
-                        </span>
-                      </div>
-                      <div className="card-actions justify-center">
-                        <Link to={`/details-toy/${data._id}`}>
-                          <button className="btn btn-error">
-                            View Details
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </TabPanel>
-          <TabPanel>
-            <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
-              {categoryData.map((data) => {
-                return (
-                  <div
-                    key={data._id}
-                    className="card w-96 bg-base-100 shadow-xl"
-                  >
-                    <figure className="h-[300px]">
-                      <img src={data.photo} alt="Shoes" />
-                    </figure>
-                    <div className="card-body">
-                      <h2 className="card-title">{data.toyName}</h2>
-                      <p className="text-left">Price : {data.price}</p>
-                      <div className="flex items-center gap-2 my-3">
-                        <ReactStars
-                          classNames="text-slate-500 inline"
-                          count={5}
-                          value={data.rating}
-                          edit={false}
-                          size={14}
-                          isHalf={true}
-                          emptyIcon={<i className="far fa-star"></i>}
-                          halfIcon={<i className="fa fa-star-half-alt"></i>}
-                          fullIcon={<i className="fa fa-star"></i>}
-                          activeColor="text-slate-500"
-                        />
-                        <span className="text-orange-700 font-bold ">
-                          {data.rating}
-                        </span>
-                      </div>
-                      <div className="card-actions justify-center">
-                        <Link to={`/details-toy/${data._id}`}>
-                          <button className="btn btn-error">
-                            View Details
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </TabPanel>
-        </div>
+        {category?.map((cat, index) => {
+          return (
+            <TabPanel key={index}>
+              <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
+                {categoryData?.map((catItem) => (
+                  <SingleTabPanel
+                    key={catItem._id}
+                    data={catItem}
+                  ></SingleTabPanel>
+                ))}
+              </div>
+            </TabPanel>
+          );
+        })}
       </Tabs>
     </div>
   );

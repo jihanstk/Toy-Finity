@@ -8,11 +8,11 @@ const AddAToy = () => {
     // form select
     event.preventDefault();
     const form = event.target;
-    const toyName = form.toyName.value;
+    const toyName = form.toyName.value.toLowerCase();
     const email = form.email.value;
     const photo = form.photo.value;
     const seller = form.seller.value;
-    const category = form.category.value;
+    const category = form.category.value.toLowerCase();
     const price = form.price.value;
     const rating = form.rating.value;
     const quantity = form.quantity.value;
@@ -28,7 +28,7 @@ const AddAToy = () => {
       details,
       email,
     };
-
+    console.log(toyData);
     // post data via api
 
     fetch("http://localhost:5021/add-toy", {
@@ -139,13 +139,13 @@ const AddAToy = () => {
                       required
                     >
                       <option value="1">1</option>
-                      <option value="1">1.5</option>
-                      <option value="1">2</option>
-                      <option value="1">2.5</option>
-                      <option value="2">3</option>
-                      <option value="3">3.5</option>
+                      <option value="1.5">1.5</option>
+                      <option value="2">2</option>
+                      <option value="2.5">2.5</option>
+                      <option value="3">3</option>
+                      <option value="3.5">3.5</option>
                       <option value="4">4</option>
-                      <option value="5">4.5</option>
+                      <option value="4.5">4.5</option>
                       <option value="5">5</option>
                     </select>
                   </div>

@@ -21,6 +21,7 @@ const Gallery = () => {
           className="flex relative p-6"
           data-aos="fade-up-right"
           data-aos-duration="1000"
+          data-aos-offset="200"
         >
           <img
             src="https://images.pexels.com/photos/92615/pexels-photo-92615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"

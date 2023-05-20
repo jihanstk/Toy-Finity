@@ -1,25 +1,31 @@
 import { useContext, useState } from "react";
-import { IoMdClose, IoIosMenu, IoMdSearch } from "react-icons/io";
+import { IoMdClose, IoIosMenu } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 // import { NavLink } from "react-router-dom";
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const [showSearchBar, setShowSearchBar] = useState(false);
+  // const [showSearchBar, setShowSearchBar] = useState(false);
   const handleLogOut = () => {
     logOut();
   };
 
   let [open, setOpen] = useState(false);
   return (
-    <div className="shadow-md w-full fixed top-0  left-0 z-10 ">
+    <div className="shadow-md w-full fixed top-0  left-0 z-20 ">
       <div className="flex items-center justify-between bg-white py-4 md:px-10 px-7">
         <div
           className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
     text-gray-800"
         >
-          <Link to="/">
-            <span className="text-3xl text-indigo-600 mr-1 pt-2"></span>
+          <Link className="flex items-center" to="/">
+            <span className="text-3xl text-indigo-600 mr-1 pt-2">
+              <img
+                className="w-10 h-10"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTrnTCDQ5iQnUFAlJNvKwngfJe-5IomRPIkA&usqp=CAU"
+                alt=""
+              />
+            </span>
             TOYFINITY
           </Link>
         </div>
@@ -87,18 +93,6 @@ const NavBar = () => {
           </li>
         </ul>
 
-        <div
-          className={`form-control md:pb-0 pb-12 absolute  z-[-1] right-0 w-1/2 transition-all  duration-500 ease-in ${
-            showSearchBar ? "top-24 right-6" : "top-[-490px]"
-          }`}
-        >
-          <input
-            className="input input-bordered"
-            type="text"
-            name="search"
-            placeholder="search"
-          />
-        </div>
         <div className="flex items-center gap-6">
           <div
             onClick={() => setOpen(!open)}
@@ -106,12 +100,7 @@ const NavBar = () => {
           >
             {open ? <IoMdClose></IoMdClose> : <IoIosMenu></IoIosMenu>}
           </div>
-          <div
-            onClick={() => setShowSearchBar(!showSearchBar)}
-            className="text-2xl  cursor-pointer "
-          >
-            <IoMdSearch></IoMdSearch>
-          </div>
+
           {user ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
