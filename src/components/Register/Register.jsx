@@ -1,19 +1,29 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { titleName } from "../../TitleName/TitleName";
 
 const Register = () => {
   const { UpdateUserProfile, registerUser, setUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
   titleName("Register");
   const handleRegisterSubmit = (event) => {
     event.preventDefault();
+    setError("");
     const form = event.target;
     const name = form.name.value;
     const photoUrl = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, photoUrl, email, password);
+
+    if (password.length < 6) {
+      setError("PassWord Must be Grater than 6");
+      return;
+    }
+    if (!/^[A-Z]+$/.test(password)) {
+      setError("password Must be 1 Letter and Uppercase");
+      return;
+    }
     registerUser(email, password)
       .then((res) => {
         const user = res.user;
@@ -22,7 +32,7 @@ const Register = () => {
         setUser(res.user);
         form.reset();
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => setError(err.message));
   };
   return (
     <div className="hero min-h-screen mt-24 bg-base-200">
@@ -102,6 +112,7 @@ const Register = () => {
                 Please Login
               </Link>
             </p>
+            <p className="text-red-700">{error}</p>
           </div>
         </div>
       </div>
