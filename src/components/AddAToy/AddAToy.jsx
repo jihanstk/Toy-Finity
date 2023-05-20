@@ -33,7 +33,7 @@ const AddAToy = () => {
     console.log(toyData);
     // post data via api
 
-    fetch("http://localhost:5021/add-toy", {
+    fetch("https://toy-finity-server.vercel.app/add-toy", {
       method: "POST",
       headers: {
         "content-type": "application/json",

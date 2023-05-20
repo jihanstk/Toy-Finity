@@ -9,7 +9,7 @@ import SingleTabPanel from "./singleTabPanel/SingleTabPanel";
 const CategoryToys = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [category, setCategory] = useState([]);
-  const [tabText, setTabText] = useState("sport");
+  const [tabText, setTabText] = useState(category[0]);
   useEffect(() => {
     Aos.init();
   }, []);
@@ -21,7 +21,9 @@ const CategoryToys = () => {
   };
   useEffect(() => {
     setCategoryData(null);
-    fetch(`http://localhost:5021/category-data?category=${tabText}`)
+    fetch(
+      `https://toy-finity-server.vercel.app/category-data?category=${tabText}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCategoryData(data);
@@ -29,7 +31,7 @@ const CategoryToys = () => {
       });
   }, [tabText]);
   useEffect(() => {
-    fetch(`http://localhost:5021/all-toys`)
+    fetch(`https://toy-finity-server.vercel.app/all-toys`)
       .then((res) => res.json())
       .then((data) => {
         const uniqueCategories = [];

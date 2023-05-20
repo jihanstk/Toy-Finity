@@ -6,7 +6,12 @@ const Gallery = () => {
     Aos.init();
   }, []);
   return (
-    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay="200"
+      data-aos-offset="-100"
+    >
       <div data-aos="fade-up-right" data-aos-duration="1000">
         <h1 className="text-5xl font-bold text-center">Recent Toy Photos</h1>
         <p className="md:w-1/2 md:mx-auto text-center text-slate-600">

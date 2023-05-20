@@ -37,7 +37,7 @@ const SingleToyDetails = () => {
             <span className="text-orange-700 font-bold ">{rating}</span>
           </div>
           <p className="text-slate-500 my-2">
-            Price: <strong>{price}</strong>{" "}
+            Price: $<strong>{price}</strong>{" "}
           </p>
           <p className="text-slate-500 my-2">
             Quantity: <strong>{quantity}</strong>{" "}

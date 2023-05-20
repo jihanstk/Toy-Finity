@@ -1,8 +1,19 @@
 import { IoIosPlayCircle } from "react-icons/io";
+import "aos/dist/aos.css";
+import Aos from "aos";
+import { useEffect } from "react";
 
 const ChildrenVideo = () => {
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
-    <div className="my-24 relative">
+    <div
+      className="my-24 relative"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-offset="200"
+    >
       <img
         className="rounded-xl"
         src="https://cdn.shopify.com/s/files/1/1152/4590/files/video_1903x_68d6b0d8-8a04-4667-a075-a616bab789ef.jpg?v=1676955196"

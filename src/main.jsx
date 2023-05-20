@@ -14,11 +14,14 @@ import PrivetRoute from "./PrivetRoute/PrivetRoute";
 import UpdateToy from "./components/MyToys/MyToyRow/UpdateToy/UpdateToy";
 import AllToys from "./components/AllToys/AllToys";
 import SingleToyDetails from "./components/SingleToyDetails/SingleToyDetails";
+import Blog from "./components/Blog/Blog";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -48,7 +51,7 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5021/all-toys/${params.id}`),
+          fetch(`https://toy-finity-server.vercel.app/all-toys/${params.id}`),
       },
       {
         path: "/all-toys",
@@ -62,11 +65,15 @@ const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5021/my-toys/${params.id}`),
+          fetch(`https://toy-finity-server.vercel.app/my-toys/${params.id}`),
       },
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/blog",
+        element: <Blog></Blog>,
       },
       {
         path: "/login",

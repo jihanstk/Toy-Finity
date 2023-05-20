@@ -46,7 +46,7 @@ const MyToyRow = ({ myToy, handleDeleteMyToy }) => {
       </td>
       <td>{seller}</td>
       <td>{category}</td>
-      <td>{price}</td>
+      <td>${price}</td>
       <td>{quantity}</td>
       <td>{rating}</td>
       <th>

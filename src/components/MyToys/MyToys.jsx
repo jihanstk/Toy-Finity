@@ -21,7 +21,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5021/my-toys/${id}`, {
+        fetch(`https://toy-finity-server.vercel.app/my-toys/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -37,7 +37,7 @@ const MyToys = () => {
   };
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:5021/my-toys?email=${user.email}`)
+    fetch(`https://toy-finity-server.vercel.app/my-toys?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setMytoys(data);

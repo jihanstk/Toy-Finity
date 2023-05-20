@@ -35,7 +35,7 @@ const UpdateToy = () => {
 
     // post data via api
 
-    fetch(`http://localhost:5021/update-toy/${_id}`, {
+    fetch(`https://toy-finity-server.vercel.app/update-toy/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
