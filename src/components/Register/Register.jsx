@@ -20,8 +20,9 @@ const Register = () => {
       setError("PassWord Must be Grater than 6");
       return;
     }
-    if (!/^[A-Z]+$/.test(password)) {
-      setError("password Must be 1 Letter and Uppercase");
+
+    if (!/(?=.*[A-Z])/.test(password)) {
+      setError("password Must be 1 Letter and Uppercase[A-Z]");
       return;
     }
     registerUser(email, password)

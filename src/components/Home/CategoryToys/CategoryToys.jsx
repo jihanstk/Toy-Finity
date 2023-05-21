@@ -9,7 +9,9 @@ import SingleTabPanel from "./singleTabPanel/SingleTabPanel";
 const CategoryToys = () => {
   const [categoryData, setCategoryData] = useState([]);
   const [category, setCategory] = useState([]);
+
   const [tabText, setTabText] = useState(category[0]);
+  console.log(category[0]);
   useEffect(() => {
     Aos.init();
   }, []);
@@ -27,6 +29,7 @@ const CategoryToys = () => {
       .then((res) => res.json())
       .then((data) => {
         setCategoryData(data);
+        // setCategory(data[0]);
         console.log(data);
       });
   }, [tabText]);
@@ -43,6 +46,7 @@ const CategoryToys = () => {
         });
 
         setCategory(uniqueCategories);
+        setTabText(uniqueCategories[0]);
         console.log(uniqueCategories);
       });
   }, []);

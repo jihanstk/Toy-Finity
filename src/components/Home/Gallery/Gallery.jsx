@@ -10,7 +10,7 @@ const Gallery = () => {
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-delay="200"
-      data-aos-offset="-100"
+      data-aos-offset="-1000"
     >
       <div data-aos="fade-up-right" data-aos-duration="1000">
         <h1 className="text-5xl font-bold text-center">Recent Toy Photos</h1>
@@ -22,7 +22,13 @@ const Gallery = () => {
         </p>
       </div>
       <div className="grid md:grid-cols-2 h-1/4 overflow-y-hidden">
-        <div className="flex relative p-6">
+        <div
+          className="flex relative p-6"
+          data-aos="fade-up-right"
+          data-aos-duration="1000"
+          data-aos-delay="300"
+          // data-aos-offset="-1000"
+        >
           <img
             src="https://images.pexels.com/photos/92615/pexels-photo-92615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt=""
@@ -59,7 +65,7 @@ const Gallery = () => {
           className="grid grid-cols-2 gap-5 p-6"
           data-aos="fade-up"
           data-aos-duration="1000"
-          data-aos-delay="300"
+          data-aos-delay="100"
         >
           <img
             src="https://images.pexels.com/photos/981570/pexels-photo-981570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"

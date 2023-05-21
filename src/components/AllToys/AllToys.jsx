@@ -76,6 +76,9 @@ const AllToys = () => {
             </select>
           </form>
         </div>
+        <div>
+          <h1>product NUm: {myToys.length}</h1>
+        </div>
       </div>
       <table className="table w-full">
         {/* head */}
