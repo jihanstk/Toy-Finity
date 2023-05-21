@@ -59,7 +59,7 @@ const NavBar = () => {
               <li className="md:ml-8 text-xl md:my-0 my-7">
                 <NavLink
                   onClick={() => setOpen(false)}
-                  to="my-toys"
+                  to="/my-toys"
                   className={({ isActive }) =>
                     isActive ? "text-orange-700" : ""
                   }

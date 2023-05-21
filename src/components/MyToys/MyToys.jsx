@@ -9,6 +9,19 @@ const MyToys = () => {
   const [myToys, setMytoys] = useState([]);
   const [loading, setLoading] = useState(true);
   titleName("My-Toy");
+  const handleSortBy = (event) => {
+    event.preventDefault();
+    const sortType = event.target.value;
+    console.log(sortType);
+    setLoading(true);
+    setMytoys(null);
+    fetch(`https://toy-finity-server.vercel.app/sort-by-price?sort=${sortType}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMytoys(data);
+        setLoading(false);
+      });
+  };
 
   const handleDeleteMyToy = (id) => {
     Swal.fire({
@@ -53,6 +66,18 @@ const MyToys = () => {
   }
   return (
     <div className="overflow-x-auto w-full">
+      <div className="mx-auto text-center my-10">
+        <select
+          onChange={handleSortBy}
+          className="border border-slate-700 p-3"
+          name="SortBy"
+          id=""
+        >
+          <option value="">Filter Price</option>
+          <option value="1">Low to Heigh Price</option>
+          <option value="-1">High to Low Price</option>
+        </select>
+      </div>
       <table className="table w-full">
         {/* head */}
         <thead>
