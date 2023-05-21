@@ -6,6 +6,7 @@ import { titleName } from "../../TitleName/TitleName";
 const Register = () => {
   const { UpdateUserProfile, registerUser, setUser } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   titleName("Register");
   const handleRegisterSubmit = (event) => {
     event.preventDefault();
@@ -31,6 +32,7 @@ const Register = () => {
         UpdateUserProfile(user, name, photoUrl);
         console.log(res.user);
         setUser(res.user);
+        setSuccess("user is created");
         form.reset();
       })
       .catch((err) => setError(err.message));
@@ -114,6 +116,7 @@ const Register = () => {
               </Link>
             </p>
             <p className="text-red-700">{error}</p>
+            <p className="text-green-600">{success}</p>
           </div>
         </div>
       </div>
